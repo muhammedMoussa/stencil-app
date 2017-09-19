@@ -6,26 +6,21 @@ import { Component, Prop } from '@stencil/core'
 })
 
 export class MyComponent {
-	constructor() {
-       this.heroes = [
-       	{name: 'Emad', age: 21},
-       	{name: 'Essam', age: 22}
-       ]
-    }
-	friends = [1, 2, 3];
-	@Prop() name: string;
-	heroes: any[];
+	handleClick(event: UIEvent){
+		alert('Hello World!' )
+	};
+	handleChang(event){
+		console.log('Input value: ' + event.target.value)
+	};
 	render(){
 		 return (
 		    <div>
-		      {this.heroes.map( hero => {
-		      	return(
-					<div>
-						<p>Name: {hero.name} - Age: {hero.age}</p>
-					</div>
-		      	)
-		      })}
+				<button onClick={ (event: UIEvent) => this.handleClick(event) }>Click!</button>
+				<input onChange={ (event: UIEvent) => this.handleChang(event) } />
 		    </div>
 		  )
 	}
 }
+
+// Contxt way
+// <button onClick={this.handleClick.bind(this)}>Click!</button>
