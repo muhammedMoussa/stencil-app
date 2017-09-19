@@ -6,24 +6,26 @@ import { Component, Prop } from '@stencil/core'
 })
 
 export class MyComponent {
+	constructor() {
+       this.heroes = [
+       	{name: 'Emad', age: 21},
+       	{name: 'Essam', age: 22}
+       ]
+    }
+	friends = [1, 2, 3];
 	@Prop() name: string;
-	//@Prop() age: string;
+	heroes: any[];
 	render(){
-		if(this.name){
-			return (<p>Hello, {this.name}</p>)
-		} else {
-			return (<p>Hello World!</p>)
-		}
+		 return (
+		    <div>
+		      {this.heroes.map( hero => {
+		      	return(
+					<div>
+						<p>Name: {hero.name} - Age: {hero.age}</p>
+					</div>
+		      	)
+		      })}
+		    </div>
+		  )
 	}
 }
-
-//ES6 Templating
-//render(){ return (`My First Name is ${this.name}) }`
-
-//ES6 Conditional rendering
-// <div>
-// { this.name ?
-// <p>Hello {this.name}</p>:
-// <p>Hello World!</p>
-// }
-// </div>
